@@ -53,3 +53,4 @@ today = "friday"
 print("day" in today)
 print("fri" in today)
 print("lol" in "trol")
+print("Dziala")
