@@ -8,5 +8,5 @@ elif 0 < age < 18:
 elif age > 31:
     print("Sorry {0}, you are too old. ".format(name))
 else:
-    print("Incorrect age. ")
+    print("Incorrect age. Try again.")
 
