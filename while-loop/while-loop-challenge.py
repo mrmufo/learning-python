@@ -10,20 +10,30 @@
 # 0 (zero) for their guess.
 import random
 
+attempts = 5
 highest = 10
 answer = random.randint(1, highest)
+print(answer)
 
 print("Please guess a number between 1 and {}: ".format(highest))
 guess = int(input())
-if guess != answer:
-    if guess < answer:
-        print("Please guess higher:")
+while attempts != 0:
+    if guess != answer:
+        if guess < answer:
+            print("Please guess higher:")
+        else:
+            print("Please guess lower: ")
+        guess = int(input())
+        attempts -= 1
+
+        if guess == answer:
+            print("Well done, you guessed it. ")
+            break
+        elif guess == 0:
+            print("You gave up. Shame on you!")
+            break
     else:
-        print("Please guess lower: ")
-    guess = int(input())
-    if guess == answer:
-        print("Well done, you guessed it. ")
-    else:
-        print("Sorry, you have not guessed correctly. ")
+        print("You got it first time! ")
+        break
 else:
-    print("You got it first time! ")
+    print("Sorry, you have run out of guess attempts. ")
