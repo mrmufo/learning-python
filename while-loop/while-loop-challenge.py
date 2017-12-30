@@ -13,7 +13,6 @@ import random
 attempts = 5
 highest = 10
 answer = random.randint(1, highest)
-print(answer)
 
 print("Please guess a number between 1 and {}: ".format(highest))
 guess = int(input())
