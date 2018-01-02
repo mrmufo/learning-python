@@ -60,11 +60,13 @@ menu.append(["egg", "spam"])
 menu.append(["egg", "bacon", "spam"])
 menu.append(["egg", "bacon", "sausage", "spam"])
 menu.append(["spam", "bacon", "sausage", "spam"])
-menu.append(["spam", "egg", "spam", "spam", "bacon", "spam"])
+menu.append(["egg", "strawberries", "salmon", "Marmite"])
 menu.append(["spam", "egg", "sausage", "spam"])
 
 #  print(menu)
 
 for meal in menu:
-    if not "spam" in meal:
-        print(meal)
+    if "spam" not in meal:
+        print("\nIngredients: ")
+        for ingredient in meal:
+            print(ingredient)
