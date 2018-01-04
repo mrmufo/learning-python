@@ -93,31 +93,31 @@
 
 # and see if you can work out what will be printed before running the program. If you are unsure, use a
 # for loop to print out the values of o to see why p returns what it does.
-alphabet = " abcdefghijklmnopqrstuvwABCDEFGHIJKLMNOPQRSTUVWXYZ"
+alphabet = " .,?!%£*aąbcćdeęfghijklłmnńoópqrsśtuvwxyzżźAĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŻŹ"
 alphabetBackString = alphabet[::-1]
 indexedMessage = []
 decIndexedMessage = []
 decryptedMessage = ""
 encryptedMessage = ""
 menu = 1
-while menu != '0':
-    menu = input("Press 1 to encrypt\n"
-                 "Press 2 to decrypt\n"
-                 "Press 0 to exit")
-    if menu == '1':
+while menu in [0, 1, 2]:
+    menu = int(input("Press 1 to encrypt\n"
+                     "Press 2 to decrypt\n"
+                     "Press 0 to exit\n"))
+    if menu == 1:
         rawMessage = input("Enter your message to encrypt: ")
 
         for i in rawMessage:
             indexedMessage.append(alphabet.index(i))
 
         for i in indexedMessage:
-            print(i)
-
-        for i in indexedMessage:
             encryptedMessage += alphabetBackString[i]
         print(encryptedMessage)
-    elif menu == '2':
-        rawMessage = input("Enter your encrypted message: ")
+        indexedMessage = []
+        encryptedMessage = ""
+
+    elif menu == 2:
+        rawMessage = input("Enter message to decrypt: ")
 
         for i in rawMessage:
             decIndexedMessage.append(alphabetBackString.index(i))
@@ -125,7 +125,10 @@ while menu != '0':
         for i in range(0, len(decIndexedMessage)):
             decryptedMessage += alphabet[decIndexedMessage[i]]
         print(decryptedMessage)
-    elif menu == '0':
+        decIndexedMessage = []
+        decryptedMessage = ""
+
+    elif menu == 0:
         print("Exit")
         break
 else:
