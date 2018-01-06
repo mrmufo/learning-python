@@ -49,7 +49,7 @@
 #
 # Once the program is working, modify it to print Octal rather than binary.
 
-decNumber = int(input("Enter a number to convert to binary: \n"))
+decNumber = int(input("Enter a number to convert to binary:\n"))
 binNumber = ""
 finalBinNumber = ""
 exNumber = decNumber // 2
@@ -69,8 +69,32 @@ while True:
         modNumber = exNumber % 2
         exNumber = exNumber // 2
     else:
+        if binNumber == "":
+            finalBinNumber += "0"
         for i in binNumber[::-1]:
             finalBinNumber += i
         break
 
 print(finalBinNumber)
+# ================== or
+powers = []
+x = int(input("Please enter a number:\n"))
+isDivisible = x
+maxPower = 0
+binOrOct = 8
+while isDivisible != 0:
+    isDivisible //= binOrOct
+    maxPower += 1
+
+for power in range(maxPower, -1, -1):
+    powers.append(binOrOct ** power)
+
+printing = False
+
+for power in powers:
+    bit = x // power
+    if bit != 0 or power == 1:
+        printing = True
+    if printing:
+        print(x // power, end = '')
+    x %= power
