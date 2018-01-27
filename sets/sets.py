@@ -46,11 +46,11 @@
 # print(even & squares)
 # print(squares.intersection(even))
 # print(squares & even)
-even = set(range(0, 40, 2))
-print(even)
-squares_tuple = (4, 6, 9, 16, 25)
-squares = set(squares_tuple)
-print(sorted(squares))
+# even = set(range(0, 40, 2))
+# print(even)
+# squares_tuple = (4, 6, 9, 16, 25)
+# squares = set(squares_tuple)
+# print(sorted(squares))
 
 # print("even minus squares")
 # print(sorted(even.difference(squares)))
@@ -72,9 +72,26 @@ print(sorted(squares))
 # print("symmetric squares minus even")
 # print(sorted(squares.symmetric_difference(even)))
 
-squares.discard(4)
-squares.discard(16)
-squares.discard(8)
-print(squares)
+# squares.discard(4)
+# squares.discard(16)
+# squares.discard(8)
+# print(squares)
+# try:
+#     squares.remove(8)
+# except KeyError:
+#     print("The item 8 is not a member of the set")
+# even = set(range(0, 40, 2))
+# print(even)
+# squares_tuple = (4, 6, 9, 16, 25)
+# squares = set(squares_tuple)
+# print(squares)
+#
+# if squares.issubset(even):
+#     print("sqares is a subset of even")
+#
+# if even.issubset(squares):
+#     print("even is a superset of squares")
 
-squares.remove(8)
+even = frozenset
+
+print(even)
