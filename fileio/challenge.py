@@ -23,5 +23,5 @@ maxNumber = 12
 with open("sample2.txt", 'w') as jabberwocky_poem:
     for i in range(1, multiplier+1):
         for j in range(1, maxNumber+1):
-            jabberwocky_poem.write("{number:2.0f} times {multiplier} is {result}\n".format(number=j, multiplier=i, result=j*i))
+            jabberwocky_poem.write("{number:>} times {multiplier} is {result}\n".format(number=j, multiplier=i, result=j*i))
         jabberwocky_poem.write("---------------------\n")
