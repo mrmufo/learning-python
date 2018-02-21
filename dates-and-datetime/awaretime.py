@@ -8,7 +8,7 @@ print("Naive local time: \t{}".format(local_time.strftime("%c")))
 print("Naive UTC: \t\t\t{}".format(utc_time.strftime("%c")))
 
 aware_local_time = pytz.utc.localize(local_time).astimezone()
-aware_utc_time = pytz.utc.localize(utc_time)
+aware_utc_time = pytz.utc.localize(utc_time).astimezone()
 print("Aware local time: \t{}, time zone {} ".format(aware_local_time, aware_local_time.tzinfo))
 print("Aware UTC: \t\t\t{}, time zone {}".format(aware_utc_time, aware_utc_time.tzinfo))
 
