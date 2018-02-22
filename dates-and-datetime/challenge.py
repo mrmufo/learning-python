@@ -45,17 +45,30 @@ while True:
         break
 
     if chosenCountry in menu.keys():
-        cc_time = menu_tz.get(chosenCountry)
-        local_time = pytz.utc.localize(datetime.datetime.now()).astimezone()
-        utc_time = pytz.utc.localize(datetime.datetime.utcnow()).astimezone()
-        countryTimeZone = pytz.timezone(cc_time)
-        countryTime = local_time.astimezone(countryTimeZone)
+        #  ============== MY SOLUTION ===================
+        # countryTimeZone = pytz.timezone(menu_tz.get(chosenCountry))
+        # local_time = pytz.utc.localize(datetime.datetime.now()).astimezone()
+        # utc_time = pytz.utc.localize(datetime.datetime.utcnow()).astimezone()
+        # countryTime = local_time.astimezone(countryTimeZone)
+        #
+        # print("=" * 100)
+        # print("Your local time:\t{lt}, time zone {lttz} \nUTC time:\t\t\t{utc}, time zone {utctz}\n"
+        #       "Time in {country}:\t\t{ct}, time zone {ctz}"
+        #       .format(lt=local_time, lttz=local_time.tzinfo, utc=utc_time, utctz=utc_time.tzinfo,
+        #               country=menu.get(chosenCountry), ct=countryTime, ctz=countryTime.tzinfo))
+        # print("=" * 100)
+        # ===============================================
+        country_tz = pytz.timezone(menu_tz.get(chosenCountry))
+        local_time = datetime.datetime.now().strftime('%A %x %X')
+        utc_time = datetime.datetime.utcnow().strftime('%A %x %X')
+        country_time = datetime.datetime.now(tz=country_tz)
 
         print("=" * 100)
-        print("Your local time:\t{lt}, time zone {lttz} \nUTC time:\t\t\t{utc}, time zone {utctz}\n"
+        print("Your local time:\t{lt}\n"
+              "UTC time:\t\t\t{utc}\n"
               "Time in {country}:\t\t{ct}, time zone {ctz}"
-              .format(lt=local_time, lttz=local_time.tzinfo, utc=utc_time, utctz=utc_time.tzinfo,
-                      country=menu.get(chosenCountry), ct=countryTime, ctz=countryTime.tzinfo))
+              .format(lt=local_time, utc=utc_time, country=menu.get(chosenCountry),
+                      ct=country_time.strftime('%A %x %X %z'), ctz=country_time.tzname()))
         print("=" * 100)
     else:
         print("Wrong input, try again")
