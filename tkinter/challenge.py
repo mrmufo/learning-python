@@ -26,78 +26,78 @@ try:
 except ImportError:  # python 2
     import Tkinter as tkinter
 
-mainWindow = tkinter.Tk()
-mainWindow.title("Calculator")
-mainWindow.geometry('340x400+500+400')
-mainWindow.minsize(240, 320)
-mainWindow['padx'] = 8
+# =======================MY SOLUTION====================================
+# mW = tkinter.Tk()
+# mW.title("Calculator")
+# mW.geometry('340x400+500+400')
+# mW.minsize(240, 320)
+# mW['padx'] = 8
+#
+# mW.columnconfigure(0, weight=1)
+# mW.columnconfigure(1, weight=1)
+# mW.columnconfigure(2, weight=1)
+# mW.columnconfigure(3, weight=1)
+# mW.rowconfigure(0, weight=1)
+# mW.rowconfigure(1, weight=1)
+# mW.rowconfigure(2, weight=1)
+# mW.rowconfigure(3, weight=1)
+# mW.rowconfigure(4, weight=1)
+# mW.rowconfigure(5, weight=1)
+#
+# result = tkinter.Entry(mW)
+# result.grid(row=0, column=0, columnspan=4, sticky='nsew', padx=1, pady=10)
+#
+# buttonList = ["0", "=", "/", "1", "2", "3", "*", "4", "5", "6", "-", "7", "8", "9", "+", "C", "CE"]
+# col_counter = 0
+# row_counter = 5
+# col_span = 1
+# row_span = 1
+# for each in buttonList:
+#     new_button = tkinter.Button(mW, text=each, font=18)  # , command=result.insert(0, each))
+#     if each == '=':
+#         col_span = 2
+#         new_button.grid(row=row_counter, column=col_counter, columnspan=col_span, rowspan=row_span, sticky='nsew',
+#                         padx=2, pady=2)
+#         col_counter += 2
+#         continue
+#     new_button.grid(row=row_counter, column=col_counter, columnspan=col_span, rowspan=row_span, sticky='nsew',
+#                     padx=2, pady=2)
+#     col_counter += 1
+#     if col_counter > 3:
+#         col_counter = 0
+#         row_counter -= 1
+#     col_span = 1
+#     row_span = 1
+# ========================================================================
 
-mainWindow.columnconfigure(0, weight=1)
-mainWindow.columnconfigure(1, weight=1)
-mainWindow.columnconfigure(2, weight=1)
-mainWindow.columnconfigure(3, weight=1)
-mainWindow.rowconfigure(0, weight=1)
-mainWindow.rowconfigure(1, weight=1)
-mainWindow.rowconfigure(2, weight=1)
-mainWindow.rowconfigure(3, weight=1)
-mainWindow.rowconfigure(4, weight=1)
-mainWindow.rowconfigure(5, weight=1)
+keys = [[('C', 1), ('CE', 1)],
+        [('7', 1), ('8', 1), ('9', 1), ('+', 1)],
+        [('4', 1), ('5', 1), ('6', 1), ('-', 1)],
+        [('1', 1), ('2', 1), ('3', 1), ('*', 1)],
+        [('0', 1), ('=', 2), ('/', 1)]]
 
-result = tkinter.Entry(mainWindow)
-result.grid(row=0, column=0, columnspan=4, sticky='nsew', padx=1, pady=10)
+mW_padding = 8
+mW = tkinter.Tk()
+mW.title("Calculator")
+mW.geometry('640x480+200+400')
+mW['padx'] = mW_padding
 
-# keyPad = tkinter.Frame(mainWindow)
-# keyPad.grid(row=1, column=0, sticky='nsew')
+result = tkinter.Entry(mW)
+result.grid(row=0, column=0, sticky='nsew')
 
-buttonList = ["0", "=", "/", "1", "2", "3", "*", "4", "5", "6", "-", "7", "8", "9", "+", "C", "CE"]
-col_counter = 0
-row_counter = 5
-col_span = 1
-row_span = 1
-for each in buttonList:
-    new_button = tkinter.Button(mainWindow, text=each, font=18)  # , command=result.insert(0, each))
-    if each == '=':
-        col_span = 2
-        new_button.grid(row=row_counter, column=col_counter, columnspan=col_span, rowspan=row_span, sticky='nsew',
-                        padx=2, pady=2)
-        col_counter += 2
-        continue
-    new_button.grid(row=row_counter, column=col_counter, columnspan=col_span, rowspan=row_span, sticky='nsew',
-                    padx=2, pady=2)
-    col_counter += 1
-    if col_counter > 3:
-        col_counter = 0
-        row_counter -= 1
-    col_span = 1
-    row_span = 1
+key_pad = tkinter.Frame(mW)
+key_pad.grid(row=1, column=0, sticky='nsew')
 
-# c_Button = tkinter.Button(mainWindow, text="C")
-# ce_Button = tkinter.Button(mainWindow, text="CE")
-# sev_Button = tkinter.Button(mainWindow, text="7")
-# eig_Button = tkinter.Button(mainWindow, text="8")
-# nin_Button = tkinter.Button(mainWindow, text="9")
-# plus_Button = tkinter.Button(mainWindow, text="+")
-# fou_Button = tkinter.Button(mainWindow, text="4")
-# fiv_Button = tkinter.Button(mainWindow, text="5")
-# six_Button = tkinter.Button(mainWindow, text="6")
-# minus_Button = tkinter.Button(mainWindow, text="-")
-# one_Button = tkinter.Button(mainWindow, text="1")
-# two_Button = tkinter.Button(mainWindow, text="2")
-# thr_Button = tkinter.Button(mainWindow, text="3")
-# times_Button = tkinter.Button(mainWindow, text="*")
-# c_Button.grid(row=1, column=0, sticky='nsew')
-# ce_Button.grid(row=1, column=1, sticky='nsew')
-# sev_Button.grid(row=2, column=0, sticky='nsew')
-# eig_Button.grid(row=2, column=1, sticky='nsew')
-# nin_Button.grid(row=2, column=2, sticky='nsew')
-# plus_Button.grid(row=2, column=3, sticky='nsew')
-# fou_Button.grid(row=3, column=0, sticky='nsew')
-# fiv_Button.grid(row=3, column=1, sticky='nsew')
-# six_Button.grid(row=3, column=2, sticky='nsew')
-# minus_Button.grid(row=3, column=3, sticky='nsew')
-# one_Button.grid(row=4, column=0, sticky='nsew')
-# two_Button.grid(row=4, column=1, sticky='nsew')
-# thr_Button.grid(row=4, column=2, sticky='nsew')
-# times_Button.grid(row=4, column=3, sticky='nsew')
+row = 0
 
-mainWindow.mainloop()
+for key_row in keys:
+    col = 0
+    for key in key_row:
+        tkinter.Button(key_pad, text=key[0]).grid(row=row, column=col, columnspan=key[1], sticky=tkinter.E + tkinter.W)
+        col += key[1]
+    row += 1
+mW.update()
+mW.minsize(key_pad.winfo_width() + mW_padding, result.winfo_height() + key_pad.winfo_height())
+mW.maxsize(key_pad.winfo_width() + mW_padding + 100, result.winfo_height() + key_pad.winfo_height() + 100)
+
+mW.mainloop()
