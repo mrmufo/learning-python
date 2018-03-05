@@ -33,6 +33,8 @@ def load_images(card_images):
 def deal_card(frame):
     # Pop the next card off the top of the deck
     next_card = deck.pop(0)
+    # and add it to back of the deck
+    deck.append(next_card)
     # Add the image to a Label and display the label
     tkinter.Label(frame, image=next_card[1], relief='raised').pack(side='left')
     # Now return the card's face value
@@ -45,7 +47,7 @@ def score_hand(hand):
     score = 0
     ace = False
     for next_card in hand:
-        card_value =  next_card[0]
+        card_value = next_card[0]
         if card_value == 1 and not ace:
             ace = True
             card_value = 11
@@ -101,22 +103,27 @@ def deal_player():
     # print(locals())
 
 
+def shuffle():
+    random.shuffle(deck)
+
+
+def first_deal():
+    deal_player()
+    dealer_hand.append(deal_card(dealer_card_frame))
+    dealer_score_label.set(score_hand(dealer_hand))
+    deal_player()
+
+
 def new_game():
-    global player_score_label
-    global dealer_score_label
-    # global card_frame
     global dealer_card_frame
     global player_card_frame
-    global cards
-    global deck
+    global dealer_hand
+    global player_hand
 
     player_card_frame.destroy()
     dealer_card_frame.destroy()
-
-    # card_frame.destroy()
-
-    # card_frame = tkinter.Frame(mainWindow, relief='sunken', borderwidth=1, background='green')
-    # card_frame.grid(row=1, column=0, sticky='ew', columnspan=3, rowspan=2)
+    dealer_hand = []
+    player_hand = []
 
     dealer_card_frame = tkinter.Frame(card_frame, background="green")
     dealer_card_frame.grid(row=0, column=1, sticky="ew", rowspan=2)
@@ -124,30 +131,8 @@ def new_game():
     player_card_frame = tkinter.Frame(card_frame, background="green")
     player_card_frame.grid(row=2, column=1, sticky='ew', rowspan=2)
 
-    player_score_label.set(0)
-
     result_text.set("")
-
-    # player_score_label = tkinter.IntVar()
-    # tkinter.Label(card_frame, text="Player", background="green", fg="white").grid(row=2, column=0)
-    # tkinter.Label(card_frame, textvariable=player_score_label, background="green", fg="white").grid(row=3, column=0)
-    # dealer_score_label = tkinter.IntVar()
-    # tkinter.Label(card_frame, text="Dealer", background="green", fg="white").grid(row=0, column=0)
-    # tkinter.Label(card_frame, textvariable=dealer_score_label, background="green", fg="white").grid(row=1, column=0)
-
-    # Load cards
-    cards = []
-    load_images(cards)
-    print(cards)
-    # Create a new deck of cards and shuffle then
-    deck = list(cards)
-
-    random.shuffle(deck)
-
-    deal_player()
-    dealer_hand.append(deal_card(dealer_card_frame))
-    dealer_score_label.set(score_hand(dealer_hand))
-    deal_player()
+    first_deal()
 
 
 mainWindow = tkinter.Tk()
@@ -194,22 +179,22 @@ player_button.grid(row=0, column=1)
 new_game_button = tkinter.Button(button_frame, text="New game", command=new_game)
 new_game_button.grid(row=0, column=2)
 
+shuffle_button = tkinter.Button(button_frame, text="Shuffle", command=shuffle)
+shuffle_button.grid(row=0, column=3)
+
 # Load cards
 cards = []
 load_images(cards)
 print(cards)
+
 # Create a new deck of cards and shuffle then
 deck = list(cards)
-
-random.shuffle(deck)
+shuffle()
 
 # Create the list to store the dealer's and player's hands
 dealer_hand = []
 player_hand = []
 
-deal_player()
-dealer_hand.append(deal_card(dealer_card_frame))
-dealer_score_label.set(score_hand(dealer_hand))
-deal_player()
+first_deal()
 
 mainWindow.mainloop()
