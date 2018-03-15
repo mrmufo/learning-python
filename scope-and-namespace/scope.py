@@ -1,5 +1,5 @@
 def fact(n):
-    """ calculate n! iteratively """
+    # calculate n! iteratively
     result = 1
     if n > 1:
         for f in range(2, n + 1):
@@ -8,8 +8,8 @@ def fact(n):
 
 
 def factorial(n):
-    # n! can also be defined as n * (n-1)!
-    """calculates n! recursively """
+    """ n! can also be defined as n * (n-1)!
+        calculates n! recursively """
     if n <= 1:
         return 1
     else:
@@ -17,7 +17,7 @@ def factorial(n):
 
 
 def fib(n):
-    """ F(n) = F(n - 1) + F(n - 2) """
+    # F(n) = F(n - 1) + F(n - 2)
     if n < 2:
         return n
     else:
@@ -40,4 +40,26 @@ def fibonacci(n):
 
 
 for i in range(20):
-    print(i, fibonacci(i))
+    print(i, "\t", fibonacci(i))
+
+# print([fibonacci(i) for i in range(20)])
+#
+# ======== NOT CONNECTED WITH THE TOPIC ============
+# _array = [1, 2, 3, 4]
+#
+# slownik = {
+#     _value: 'Podzielne przez 2'
+#
+#     for _value in _array
+#     if _value % 2 == 0
+# }
+#
+# slownik_b = {}
+# for _value in _array:
+#     if _value % 2 == 0:
+#         slownik_b[_value] = 'Podzielne przez 2'
+#
+# print(slownik_b)
+#
+# print(slownik)
+# ==================================================
