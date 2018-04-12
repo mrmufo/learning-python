@@ -12,6 +12,14 @@ print(woj)
 
 woj.lives -= 1
 print(woj)
-
 woj.lives -= 1
+print(woj)
+
+woj.level += 1
+print(woj)
+woj.level += 1
+print(woj)
+woj.level -= 2
+print(woj)
+woj.level -= 1
 print(woj)
