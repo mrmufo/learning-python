@@ -1,25 +1,13 @@
-from player import Player
+from enemy import Enemy
 
-woj = Player("Woj")
+random_monster = Enemy("Basic enemy", 12, 1)
+print(random_monster)
 
-print(woj.name)
-print(woj.lives)
-woj.lives -= 1
-print(woj)
+random_monster.take_damage(4)
+print(random_monster)
 
-woj.lives -= 1
-print(woj)
+random_monster.take_damage(9)
+print(random_monster)
 
-woj.lives -= 1
-print(woj)
-woj.lives -= 1
-print(woj)
-
-woj.level += 1
-print(woj)
-woj.level += 1
-print(woj)
-woj.level -= 2
-print(woj)
-woj.level -= 1
-print(woj)
+random_monster.take_damage(0)
+print(random_monster)
