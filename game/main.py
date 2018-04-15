@@ -22,6 +22,6 @@ print(awaken_vampire)
 ugly_troll.take_damage(25)
 print(ugly_troll)
 
-while awaken_vampire.alive:
+while awaken_vampire._alive:
     awaken_vampire.take_damage(1)
-    print(awaken_vampire)
+    # print(awaken_vampire)
