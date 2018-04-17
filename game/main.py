@@ -1,4 +1,4 @@
-from enemy import Enemy, Troll, Vampire
+from enemy import Enemy, Troll, Vampire, VampireKing
 
 ugly_troll = Troll("Pug")
 print("Ugly troll - {}".format(ugly_troll))
@@ -22,6 +22,8 @@ print(awaken_vampire)
 ugly_troll.take_damage(25)
 print(ugly_troll)
 
-while awaken_vampire._alive:
-    awaken_vampire.take_damage(1)
+vlad = VampireKing("Vlad The King")
+
+while vlad._alive:
+    vlad.take_damage(20)
     # print(awaken_vampire)

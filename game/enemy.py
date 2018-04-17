@@ -38,8 +38,9 @@ class Troll(Enemy):
 
 
 class Vampire(Enemy):
-    def __init__(self, name):
-        super().__init__(name=name, lives=3, hit_points=12)
+
+    def __init__(self, name):  # , hit_points=12):
+        super().__init__(name=name, lives=3, hit_points=12)  # hit_points)
 
     def dodges(self):
         if random.randint(1, 3) == 3:
@@ -51,3 +52,13 @@ class Vampire(Enemy):
     def take_damage(self, damage):
         if not self.dodges():
             super().take_damage(damage=damage)
+
+
+class VampireKing(Vampire):
+
+    def __init__(self, name):
+        super().__init__(name=name)  # , hit_points=140)
+        self._hit_points = 140
+
+    def take_damage(self, damage):
+        super().take_damage(damage // 4)
